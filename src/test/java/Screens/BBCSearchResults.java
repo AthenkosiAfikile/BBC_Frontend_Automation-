@@ -25,18 +25,18 @@ public class BBCSearchResults {
                     .until(ExpectedConditions.visibilityOfAllElements(searchResults));
 
             int actualCount = searchResults.size();
-            String msg = "🔎 Found " + actualCount + " search results.";
+            String msg = "Found " + actualCount + " search results.";
 
             if (actualCount >= expectedMinimum) {
-                scenario.attach((msg + " ✅ Meets minimum requirement: " + expectedMinimum).getBytes(), "text/plain", "Search Results Check");
+                scenario.attach((msg + "Meets minimum requirement: " + expectedMinimum).getBytes(), "text/plain", "Search Results Check");
             } else {
-                msg += " ❌ Fewer results than expected: Required " + expectedMinimum;
+                msg += "Fewer results than expected: Required " + expectedMinimum;
                 scenario.attach(msg.getBytes(), "text/plain", "Search Results Check");
                 Assert.fail(msg);
             }
 
         } catch (Exception e) {
-            String error = "⚠️ Error verifying search results: " + e.getMessage();
+            String error = "Error verifying search results: " + e.getMessage();
             scenario.attach(error.getBytes(), "text/plain", "Exception");
             Assert.fail(error);
         }
